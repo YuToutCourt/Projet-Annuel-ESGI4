@@ -1,0 +1,34 @@
+auth_enabled: false
+common:
+    path_prefix: /home/container/loki
+    replication_factor: 1
+    ring:
+        instance_addr: 0.0.0.0
+        kvstore:
+            store: inmemory
+    storage:
+        filesystem:
+            chunks_directory: /home/container/loki/chunks
+            rules_directory: /home/container/loki/rules
+
+
+#Rajouter ces lignes car les logs sont tellement long qu'on ne peut pas forcément tout récupérer
+limits_config:
+    max_query_parallelism: 2
+    max_query_series: 100000
+    reject_old_samples: true
+    reject_old_samples_max_age: 168h
+    retention_period: 360h
+ruler:
+    alertmanager_url: http://IP:PORT
+schema_config:
+    configs:
+        - from: "2020-10-24"
+          index:
+            period: 24h
+            prefix: index_
+          object_store: filesystem
+          schema: v11
+          store: boltdb-shipper
+server:
+    http_listen_port: 3100
