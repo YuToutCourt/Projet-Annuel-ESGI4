@@ -4,12 +4,12 @@ class DataBase:
     def __init__(self, db):
         self.conn = sqlite3.connect(db)
 
-    def getTrain(self, uuid):
+    def getTrain(self, name):
         cursor = self.conn.cursor()
         cursor.execute(f'''
-            SELECT * FROM train WHERE uuid = '{uuid}'
+            SELECT * FROM train WHERE private == 0 and name LIKE '%{name}%'
         ''')
-        train = cursor.fetchone()
+        train = cursor.fetchall()
         cursor.close()
         return train
 

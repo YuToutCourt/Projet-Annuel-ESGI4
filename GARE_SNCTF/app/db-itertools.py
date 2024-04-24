@@ -83,6 +83,8 @@ def random_date():
 
 date_str_list = [datetime.datetime.strftime(random_date() - datetime.timedelta(days=x), '%Y-%m-%d') for x in range(2000)]
 
+
+insertTrain(connectToDatabase(), str(uuid.uuid4()), 'express', 'voie3', 'uWugon', date_str_list[1], '12:00', 'CUIVRE', 1)
 # print(date_str_list)
 # insertTrain(connectToDatabase(), str(uuid.uuid4()), 'train2', 'voie2', 'wagon2', date_str_list[1], '12:00', 'OR', 1)
 # print(getTrains(connectToDatabase()))
