@@ -1,64 +1,79 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>SNCTF</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
-
 <script>
-
-document.addEventListener("DOMContentLoaded", function() {
-    // Sélection de l'élément input
-    var inputElement = document.getElementById("search");
-
-    // Ajout d'un écouteur d'événements pour l'événement input
-    inputElement.addEventListener("keypress", function() {
-        if (event.keyCode === 13) {
-            // Annulation du comportement par défaut de la touche Entrée
-            event.preventDefault();
-        // Récupération de la valeur de l'input
-        var valeur = inputElement.value;
-
-        // Rechargement de la page avec la nouvelle valeur de l'input
-        window.location.href = window.location.pathname + "?name=" + encodeURIComponent(valeur);
-        }
+    document.addEventListener("DOMContentLoaded", function() {
+        var formElement = document.getElementById("search-form");
+        var inputElement = document.getElementById("search");
+    
+        formElement.addEventListener("submit", function(event) {
+            event.preventDefault(); // Annulation du comportement par défaut du formulaire
+    
+            var valeur = inputElement.value;
+            window.location.href = window.location.pathname + "?name=" + encodeURIComponent(valeur);
+        });
     });
-});
-</script>
+    </script>
+    
 
 <body>
-
-    <h1 class="text-center">SNCTF</h1>
-    <h4 class="text-center">Monitoring</h4>
-    <input type="text" id="search" class="form-control" placeholder="Search train...">
-
-{% for train in data %}
-    <!-- Liste de tout les trains name, track, date, hour, wagon, freight -->
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Track</th>
-                <th scope="col">Date</th>
-                <th scope="col">Hour</th>
-                <th scope="col">Wagon</th>
-                <th scope="col">Freight</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ train.name }}</td>
-                <td>{{ train.track }}</td>
-                <td>{{ train.date }}</td>
-                <td>{{ train.hour }}</td>
-                <td>{{ train.wagon }}</td>
-                <td>{{ train.freight }}</td>
-            </tr>
-        </tbody>
-{% endfor %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="/">
+                <img src="{% static 'image/logo.png' %}" alt="Logo" id="logo" width="150" height="94">
+            </a>
+            
+            <!-- Lien Home -->
+            <a class="navbar-brand" href="/">Home</a>
+    
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex mx-auto" id="search-form">
+                    <input class="form-control me-2" type="search" id="search" placeholder="Search train..." aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    
+    
 
 
+<!-- Liste de tout les trains name, track, date, hour, wagon, freight -->
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Track</th>
+            <th scope="col">Date</th>
+            <th scope="col">Hour</th>
+            <th scope="col">Wagon</th>
+            <th scope="col">Freight</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for train in data %}
+        <tr>
+            <td>{{ train.name }}</td>
+            <td>{{ train.track }}</td>
+            <td>{{ train.date }}</td>
+            <td>{{ train.hour }}</td>
+            <td>{{ train.wagon }}</td>
+            <td>{{ train.freight }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 </body>
 

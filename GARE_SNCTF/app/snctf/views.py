@@ -18,10 +18,7 @@ def index(request):
         if nom: 
             r = requests.get("http://localhost:8000/api/train?name=" + nom)
             data = r.json().get("train")
-
             ic(data)
-
-
 
             return render(request, 'index.html', context={"data": data})
         
@@ -49,9 +46,9 @@ def get_all_trains(request):
 
     trains = dbo.getTrains()
 
-    trains_with_keys = [{"id": train[0], "uuid": train[1], "name": train[2], "track": train[3], "wagon": train[4], "date": train[5], "hour": train[6], "freight": train[7]} for train in trains]
-
-    return JsonResponse({"trains": trains_with_keys}, status=200)
+    return JsonResponse({
+        "trains": [train.__dict__ for train in trains]
+    }, status=200)
 
 
 
@@ -68,10 +65,9 @@ def get_train_by_uuid(request):
 
     if train == None:
         return JsonResponse({"message": "Train not found."}, status=404)
-    
 
     ic(train)
 
-    train_with_keys = [{"id": train[0], "uuid": train[1], "name": train[2], "track": train[3], "wagon": train[4], "date": train[5], "hour": train[6], "freight": train[7]} for train in train]
-
-    return JsonResponse({"train": train_with_keys}, status=200)
+    return JsonResponse({
+        "train": [t.__dict__ for t in train]
+    }, status=200)

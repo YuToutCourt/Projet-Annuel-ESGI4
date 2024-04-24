@@ -6,6 +6,7 @@ import string
 
 
 from itertools import *
+from tqdm import tqdm
 
 
 def connectToDatabase():
@@ -28,17 +29,6 @@ def createTable(conn):
     ''')
     conn.commit()
     cursor.close()
-
-
-
-def update_table(conn):
-    cursor = conn.cursor()
-    cursor.execute('''
-        ALTER TABLE train ADD COLUMN private BOOLEAN DEFAULT 0;
-    ''')
-    conn.commit()
-    cursor.close()
-
     
 
 def insertTrain(conn, uuid, name, voie, wagon, date, heure, cargaison, private):
@@ -60,17 +50,6 @@ def deleteTrain(conn, uuid):
     cursor.close()
 
 
-
-def getTrain(conn, uuid):
-    cursor = conn.cursor()
-    cursor.execute('''
-        SELECT * FROM train WHERE uuid = ?
-    ''', (uuid,))
-    train = cursor.fetchone()
-    cursor.close()
-    return train
-
-
 def getTrains(conn):
     cursor = conn.cursor()
     cursor.execute('''
@@ -81,47 +60,50 @@ def getTrains(conn):
     return trains
 
 
-def random_date():
-    return datetime.datetime(randint(2018, 2024), randint(1, 12), randint(1, 28))
-
-# update_table(connectToDatabase())
-
-date_str_list = [datetime.datetime.strftime(random_date() - datetime.timedelta(days=x), '%Y-%m-%d') for x in range(2000)]
-
-
-# insertTrain(connectToDatabase(), str(uuid.uuid4()), 'express', 'voie3', 'uWugon', date_str_list[1], '12:00', 'CUIVRE', 1)
-# print(date_str_list)
-# insertTrain(connectToDatabase(), str(uuid.uuid4()), 'train2', 'voie2', 'wagon2', date_str_list[1], '12:00', 'OR', 1)
-# print(getTrains(connectToDatabase()))
-# deleteTrain(connectToDatabase(), '1')
+def random_list_day(n):
+    def random_date():
+        return datetime.datetime(randint(2018, 2024), randint(1, 12), randint(1, 28))
+    return [datetime.datetime.strftime(random_date() - datetime.timedelta(days=x), '%Y-%m-%d') for x in range(n)]
 
 
 def random_hour_str():
-    return f"{randint(0, 23)}:{randint(0, 59)}"
+    return f"{randint(0, 23)}:{str(randint(0, 00)).zfill(2)}"
 
 
 def random_freight():
-    return choice(["OR", "CUIVRE", "ARGENT", "PLATINE", "DIAMANT", "RUBIS", "EMERAUDE", "SAPHIR", "TOPAZE", "AMETHYSTE", "PERLE", "JADE", "OPALE", "ONYX", "AGATE", "MALACHITE", "LAPIS-LAZULI", "TURQUOISE", "CORAIL", "NACRE", "IVOIRE", "EBENE", "ACAJOU", "PALISSANDRE", "CHENE", "ERABLE", "NOYER", "MERISIER", "BAMBOU", "ROSEAU", "OSIER", "JONC", "BAMBIN", "SAULE", "TILLEUL", "PEUPLIER", "CHARME", "HETRE", "CHATAIGNIER"])
+    return choice(["OR", "CUIVRE", "ARGENT", "TOPAZE", "AMETHYSTE", "ONYX","IVOIRE", "CHENE", "ERABLE",  "BAMBOU", "ROSEAU", "OSIER"])
 
 
 def random_track():
-    return f"{randint(1, 10)}{choice(string.ascii_uppercase)}"
+    return f"{randint(1, 3)}{choice(string.ascii_uppercase[:3])}"
 
 def random_wagon():
-    return f"{randint(1, 100)}{choice(string.ascii_uppercase)}"
+    return f"{choice(string.ascii_uppercase[:3])}{randint(1, 4)}"
+
+print("Deleting all trains...")
+#delete all trains
+for train in tqdm(getTrains(connectToDatabase())):
+    deleteTrain(connectToDatabase(), train[0])
+print("Done.")
 
 
+random_date_list = random_list_day(15)
+
+
+print("Adding new trains...")
 with open("./nom_train.txt", "r") as f:
     names = f.read().split("\n")
 
-    for _ in range(10_000):
+    for _ in tqdm(range(10_000)):
         insertTrain(connectToDatabase(), 
                     str(uuid.uuid4()), choice(names), 
                     random_track(), random_wagon(), 
-                    choice(date_str_list), 
+                    choice(random_date_list), 
                     random_hour_str(), 
                     random_freight(), 
                     randint(0, 1)
                 )
+print("Done.")
 
-    
+
+
