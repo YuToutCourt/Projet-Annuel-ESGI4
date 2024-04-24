@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SNCTF</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <h1 class="text-center">SNCTF</h1>
+    <h4 class="text-center">Monitoring</h4>
+
+    <input type="text" id="search" class="form-control" placeholder="Search train...">
+
+{% for train in data %}
+    <!-- Liste de tout les trains name, track, date, hour, wagon, freight -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Track</th>
+                <th scope="col">Date</th>
+                <th scope="col">Hour</th>
+                <th scope="col">Wagon</th>
+                <th scope="col">Freight</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ train.name }}</td>
+                <td>{{ train.track }}</td>
+                <td>{{ train.date }}</td>
+                <td>{{ train.hour }}</td>
+                <td>{{ train.wagon }}</td>
+                <td>{{ train.freight }}</td>
+            </tr>
+        </tbody>
+{% endfor %}
+
+
+
+</body>
+
+</html>

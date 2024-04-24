@@ -1,0 +1,6 @@
+services:
+  snctf_django: 
+    build:
+      context: .           
+    ports: 
+      - '8000:8000'
