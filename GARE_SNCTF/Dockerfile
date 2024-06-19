@@ -3,7 +3,8 @@ FROM alpine:latest
 RUN apk update && apk upgrade
 
 RUN apk add --no-cache python3 py3-pip && \ 
-    pip install django --break-system-packages
+    pip install django --break-system-packages && \
+    pip install requests icecream  --break-system-packages 
 
 RUN mkdir /code
 WORKDIR /code
