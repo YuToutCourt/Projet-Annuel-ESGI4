@@ -1,17 +1,19 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
+    background-color: #f4e4c1;
     padding: 0;
 }
 
 header {
-    background-color: #4d2600; /* Couleur de fond inspirée du style western */
+    background-color: #6b4226; /* Couleur de fond inspirée du style western */
     color: #fff; /* Couleur du texte */
     padding: 10px 0;
 }
 
 .container {
-    width: 90%;
+    width: 100%;
+    max-height: 70%;
     margin: 0 auto; /* Centrer le contenu */
     display: flex;
     justify-content: space-between; /* Aligner les éléments à gauche et à droite */
@@ -46,4 +48,20 @@ nav ul li a {
 
 nav ul li a:hover {
     text-decoration: underline; /* Effet de soulignement au survol */
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    background-color: #6b4226;
+    color: #fff;
+    width: 100%;
+}   
+
+.content{
+    max-height: 70%;
+}
+
+.wrapper{
+    max-height: 70%;
 }
