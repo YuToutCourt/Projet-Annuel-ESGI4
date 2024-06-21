@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ event.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>{{ event.title }}</h1>
+    </header>
+    <main>
+        <p>Date: {{ event.date }}</p>
+        <p>Details about the event: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula.</p>
+        {% if event.title == 'Secret Council' %}
+        <p style="color: red; font-weight: bold;">Un cow-boy futé sait que certaines informations se trouvent à des dates spécifiques.</p>
+        {% endif %}
+    </main>
+    <footer>
+        <p><a href="{{ url_for('index') }}">Back to Events</a></p>
+        <p>&copy; 2024 Far West Events</p>
+    </footer>
+</body>
+</html>

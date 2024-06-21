@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Far West Town Hall</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Far West Town Hall</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Events</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="mayor">
+            <h2>Mayor and Council</h2>
+            <img src="{{ url_for('static', filename='images/mayor.jpg') }}" alt="Mayor">
+            <p>Mayor: John Wayne</p>
+            <p>Deputy Mayor: Jane Doe</p>
+            <p>Council Members: Billy the Kid, Calamity Jane, Wyatt Earp</p>
+        </section>
+        <section id="public-events">
+            <h2>Public Events</h2>
+            <ul>
+                {% for id, event in events.items() %}
+                {% if event.public %}
+                <li><a href="{{ url_for('event_detail', event_id=id) }}">{{ event.title }}</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </section>
+        <section id="dalton">
+            <h2>Wanted</h2>
+            <img src="{{ url_for('static', filename='images/dalton.png') }}" alt="Wanted: Dalton">
+            <p>Wanted: The Dalton Gang</p>
+            <p>Reward: $10,000</p>
+        </section>
+        <section id="history">
+            <h2>Town History</h2>
+            <p>Far West is a town rich with history. From the gold rush to the cowboy era, our town has seen it all.</p>
+        </section>
+        <section id="news">
+            <h2>Latest News</h2>
+            <p>Stay tuned for the latest updates from the Far West town hall.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Far West Town Hall</p>
+    </footer>
+</body>
+</html>
