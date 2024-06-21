@@ -1,0 +1,12 @@
+À : FarBanK contactbanque@snctf.fr
+De : SNCTF info@snctf.com
+Objet : IMPORTANT, Heure d'arrivé du train
+
+
+Bonjour FarBanK,
+
+Nous vous contactons pour vous informer que le fameux train est prévu d'arriver à 2h du matin. 
+Nous vous prions de porter une attention particulière aux personnes à bord ainsi qu'au déchargement du contenu du train.
+
+Cordialement,
+SNCTF{2h_dU_m@t1n}

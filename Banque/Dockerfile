@@ -6,9 +6,11 @@ RUN apk add --no-cache python3 py3-pip && \
     pip install aiosmtpd --break-system-packages
 
 RUN mkdir /site
+RUN mkdir /mail
 WORKDIR /site
 
 COPY ./site/ /site/
+COPY ./mail/ /mail/
 
 WORKDIR /site/
 
