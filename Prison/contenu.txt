@@ -1,0 +1,39 @@
+# 1er étape : 
+
+Le user se connecte à la box en tant que le user visiteur en ssh.
+
+Ce user accède alors à la prison, plusieurs dossiers : salle_d_attente, salle_de_visite, cellules
+
+Il a accès a la salle_de_visite et la salle_d_attente, pas d'accès aux cellules.
+
+Dans salle_d_attente il y a rien d'intéressant, juste quelques dialogues/blagounettes. Un dialogue avec le sherrif donnera une info importante.
+
+Dialogue du shérif: Vous m'avez l'air bien louche cowboy, j'espère que vous ne venez pas libérer un de vos camarades. Enfin bref, de toute façon vous n'y arriverez jamais, notre système d'authentification est extremement robuste pour accéder aux cellules, nous utilisons des OTP, chacun de nos mots de passes est chiffré à l'aide de la clé. ehehhe voici meme notre clé, on l'utilise pour TOUS nos mot de passes, TOUS. Seules les personnes étant des gardes ont accès aux cellules.
+
+la clé : HOIAFIQFOETXW75K
+
+Ensuite dans salle_de_visite, on a une prés de chacun de : 
+
+- Dalton : Les frères dalton, rangé dans l'ordre comme par hasard.
+- Samuel : Attrapé pour pédocriminalité, en attente de castration chimique, harcelement sexuel
+- Billy : prévoyais de cambrioler un train, s'est fait attrapé avant.
+
+On cd dans chaque dossier des personnages, billy est le bon et va proposer des informations en échange de le faire sortir de la prison.
+Les autres vont juste le repousser 
+
+Dialogue salle_d_attente/billy :J'ai entendu dire que tu veux voler ce train toi aussi, je peux t'aider si tu me fais sortir de la. J'ai entendu les gardes dire mdp_chifré, phrase_chiffré avant de rentrer dans les cellules. Je comprend pas ce que ca veut dire mais tu m'as l'air futé toi. 
+
+mdp = highnoon
+phrase = l autre c le mot de passe
+
+# 2 eme étape :
+Pour accéder aux cellules, le user doit se connecter en tant que garde pour pourvoir avoir accès à /cellules.
+
+Dans /cellules on a :
+/cellules/dalton
+/cellules/samuel
+/cellules/billy
+
+le flag sera dans /cellules/billy/libere.txt
+
+Pour y avoir accès, il y aura un script key.sh avec le sticky bit root qui permettra de changer les droits de la cellules donné en argument. en changeant les droits, le garde pourra avoir accès à l'intérieur de la cellule et ducoup le flag. 
