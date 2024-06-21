@@ -17,6 +17,8 @@ WORKDIR /site/
 EXPOSE 8080
 EXPOSE 25
 
+ENV KEY FarBanK
+
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
