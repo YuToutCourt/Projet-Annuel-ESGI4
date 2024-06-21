@@ -11,7 +11,7 @@ class CustomSMTPHandler:
 
 async def run_smtp_server():
     handler = CustomSMTPHandler()
-    controller = Controller(handler, hostname='0.0.0.0', port=1025)
+    controller = Controller(handler, hostname='0.0.0.0', port=25)
     controller.start()
 
     print('SMTP server running on 0.0.0.0:1025')
@@ -25,3 +25,4 @@ async def run_smtp_server():
 
 if __name__ == '__main__':
     asyncio.run(run_smtp_server())
+    os.system("python -m http.server 8080")
