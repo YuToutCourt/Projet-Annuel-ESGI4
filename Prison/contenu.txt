@@ -8,9 +8,9 @@ Il a accès a la salle_de_visite et la salle_d_attente, pas d'accès aux cellule
 
 Dans salle_d_attente il y a rien d'intéressant, juste quelques dialogues/blagounettes. Un dialogue avec le sherrif donnera une info importante.
 
-Dialogue du shérif: Vous m'avez l'air bien louche cowboy, j'espère que vous ne venez pas libérer un de vos camarades. Enfin bref, de toute façon vous n'y arriverez jamais, notre système d'authentification est extremement robuste pour accéder aux cellules, nous utilisons des OTP, chacun de nos mots de passes est chiffré à l'aide de la clé. ehehhe voici meme notre clé, on l'utilise pour TOUS nos mot de passes, TOUS. Seules les personnes étant des gardes ont accès aux cellules.
+Dialogue du shérif: Vous m'avez l'air bien louche cowboy, j'espère que vous ne venez pas libérer un de vos camarades. Enfin bref, de toute façon vous n'y arriverez jamais, notre système d'authentification est extremement robuste pour accéder aux cellules, nous utilisons des OTP, chacun de nos mots de passes est chiffré à l'aide de la clé. ehehhe Cette clé est utilisé pour TOUS nos mdp , TOUS. Seules les personnes étant des gardes ont accès aux cellules.
 
-la clé : HOIAFIQFOETXW75K
+la clé : HOIAFIQFOETXW75K (on leur donne pas)
 
 Ensuite dans salle_de_visite, on a une prés de chacun de : 
 
@@ -36,4 +36,4 @@ Dans /cellules on a :
 
 le flag sera dans /cellules/billy/libere.txt
 
-Pour y avoir accès, il y aura un script key.sh avec le sticky bit root qui permettra de changer les droits de la cellules donné en argument. en changeant les droits, le garde pourra avoir accès à l'intérieur de la cellule et ducoup le flag. 
+Pour y avoir accès, il y aura un binaire key avec le sticky bit root qui permettra de changer les droits de la cellules donné en argument. en changeant les droits, le garde pourra avoir accès à l'intérieur de la cellule et ducoup le flag. 
