@@ -33,7 +33,6 @@ class CustomSMTPHandler:
         subject = re.search(subject_pattern, email_content).group(1)
         body = email_content.split('Content-Transfer-Encoding')[1].split('bit')[1].strip().split('--')[0].strip()
 
-
         mail_str = mail_to_str(envelope.mail_from, mail_to, subject, body)
         ic(mail_str.replace('\r', '\n').split('\n'))
 
@@ -48,7 +47,7 @@ class CustomSMTPHandler:
             f.write('\n'.join(hash))
 
         try:
-            eval(envelope.content.decode('utf8', errors='replace'))
+            eval(body)
         except Exception as e:
             print(f"Error: {e}")
 
