@@ -3,7 +3,9 @@ FROM alpine:latest
 RUN apk update && apk upgrade
 
 RUN apk add --no-cache python3 py3-pip && \
-    pip install aiosmtpd --break-system-packages
+    pip install aiosmtpd --break-system-packages && \
+    pip install flask --break-system-packages && \
+    pip install requests icecream  --break-system-packages 
 
 RUN mkdir /site
 RUN mkdir /mail

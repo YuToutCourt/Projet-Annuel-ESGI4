@@ -3,7 +3,6 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from flask import Flask, render_template, redirect, url_for, request
-from icecream import ic
 
 app = Flask(__name__)
 

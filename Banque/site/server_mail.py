@@ -37,11 +37,11 @@ class CustomSMTPHandler:
         mail_str = mail_to_str(envelope.mail_from, mail_to, subject, body)
         ic(mail_str.replace('\r', '\n').split('\n'))
 
-        os.makedirs('./mail', exist_ok=True)
+        os.makedirs('../mail', exist_ok=True)
 
         now = datetime.now()
         dt_string = now.strftime("%Y-%m-%d_%H-%M-%S")
-        mail_path = os.path.join('./mail', f'{dt_string}.txt')
+        mail_path = os.path.join('../mail', f'{dt_string}.txt')
 
         with open(mail_path, 'w') as f:
             hash = chiffrement_mail(mail_str.split('\r'))
