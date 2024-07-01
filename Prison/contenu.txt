@@ -1,3 +1,6 @@
+password root : zoulette
+password public : tocard
+
 # 1er étape : 
 
 Le user se connecte à la box en tant que le user visiteur en ssh.
@@ -8,32 +11,28 @@ Il a accès a la salle_de_visite et la salle_d_attente, pas d'accès aux cellule
 
 Dans salle_d_attente il y a rien d'intéressant, juste quelques dialogues/blagounettes. Un dialogue avec le sherrif donnera une info importante.
 
-Dialogue du shérif: Vous m'avez l'air bien louche cowboy, j'espère que vous ne venez pas libérer un de vos camarades. Enfin bref, de toute façon vous n'y arriverez jamais, notre système d'authentification est extremement robuste pour accéder aux cellules, nous utilisons des OTP, chacun de nos mots de passes est chiffré à l'aide de la clé. ehehhe Cette clé est utilisé pour TOUS nos mdp , TOUS. Seules les personnes étant des gardes ont accès aux cellules.
+Vuln : OTP password avec réutilisation de clé
 
-la clé : HOIAFIQFOETXW75K (on leur donne pas)
+la clé : AOIAFIQF
 
-Ensuite dans salle_de_visite, on a une prés de chacun de : 
+mdp: highnoon : )&.)(&>(
+string : password : 1.:21&#"
 
-- Dalton : Les frères dalton, rangé dans l'ordre comme par hasard.
-- Samuel : Attrapé pour pédocriminalité, en attente de castration chimique, harcelement sexuel
-- Billy : prévoyais de cambrioler un train, s'est fait attrapé avant.
+Connexion en tant que gardien avec le mdp trouvé
 
-On cd dans chaque dossier des personnages, billy est le bon et va proposer des informations en échange de le faire sortir de la prison.
-Les autres vont juste le repousser 
-
-Dialogue salle_d_attente/billy :J'ai entendu dire que tu veux voler ce train toi aussi, je peux t'aider si tu me fais sortir de la. J'ai entendu les gardes dire mdp_chifré, phrase_chiffré avant de rentrer dans les cellules. Je comprend pas ce que ca veut dire mais tu m'as l'air futé toi. 
-
-mdp = highnoon
-phrase = l autre c le mot de passe
 
 # 2 eme étape :
 Pour accéder aux cellules, le user doit se connecter en tant que garde pour pourvoir avoir accès à /cellules.
 
-Dans /cellules on a :
-/cellules/dalton
-/cellules/samuel
-/cellules/billy
+Pour cela il doit obtenir les droits route, pour cela, il peut faire sudo -l et voir qu'il peut utiliser sudo
 
-le flag sera dans /cellules/billy/libere.txt
+Exploit : sudo sudo cat cellules/flag.txt
 
-Pour y avoir accès, il y aura un binaire key avec le sticky bit root qui permettra de changer les droits de la cellules donné en argument. en changeant les droits, le garde pourra avoir accès à l'intérieur de la cellule et ducoup le flag. 
+
+
+
+## Image Docker
+
+https://hub.docker.com/layers/gizm0o/ctf/prison/images/sha256-61f2c5b50d59a535e04be4790cef6b0d95545e02e1e21a48f321b93ded64b7eb?context=repo
+
+docker pull gizm0o/ctf:prison
