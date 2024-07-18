@@ -50,4 +50,4 @@ def flag_redirect():
     return render_template('flag.html', date=None)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)

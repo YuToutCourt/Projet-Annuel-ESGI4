@@ -1,0 +1,172 @@
+.LFB0:
+        .cfi_startproc
+        push    rbp                         # Save old base pointer
+        .cfi_def_cfa_offset 16
+        .cfi_offset 6, -16
+        mov     rbp, rsp                    # Set new base pointer
+        .cfi_def_cfa_register 6
+
+        # Initialize array elements on the stack
+        mov     DWORD PTR -96[rbp], 88      # array[0] = 88
+        mov     DWORD PTR -92[rbp], 83      # array[1] = 83
+        mov     DWORD PTR -88[rbp], 72      # array[2] = 72
+        mov     DWORD PTR -84[rbp], 89      # array[3] = 89
+        mov     DWORD PTR -80[rbp], 75     # array[4] = 75 $
+        mov     DWORD PTR -76[rbp], 118      # array[5] = 118
+        mov     DWORD PTR -72[rbp], 83     # array[6] = 83
+        mov     DWORD PTR -68[rbp], 111     # array[7] = 111
+        mov     DWORD PTR -64[rbp], 106      # array[8] = 106
+        mov     DWORD PTR -60[rbp], 112     # array[9] = 112 $
+        mov     DWORD PTR -56[rbp], 112      # array[10] = 112
+        mov     DWORD PTR -52[rbp], 108     # array[11] = 108
+        mov     DWORD PTR -48[rbp], 99     # array[12] = 99
+        mov     DWORD PTR -44[rbp], 93      # array[13] = 93
+        mov     DWORD PTR -40[rbp], 114     # array[14] = 114 $
+        mov     DWORD PTR -36[rbp], 113      # array[15] = 113
+        mov     DWORD PTR -32[rbp], 119      # array[16] = 119
+        mov     DWORD PTR -28[rbp], 116     # array[17] = 116
+        mov     DWORD PTR -24[rbp], 112      # array[18] = 112
+        mov     DWORD PTR -20[rbp], 103     # array[19] = 103
+        mov     DWORD PTR -16[rbp], 79      # array[20] = 79
+        mov     DWORD PTR -12[rbp], 116     # array[21] = 116
+        mov     DWORD PTR -4[rbp], 0        # i = 0
+
+        jmp     .L2                         # Jump to check condition for the first loop
+.L3:
+        # Decrement first 5 elements by 5
+        mov     eax, DWORD PTR -4[rbp]      # Load i into eax
+        cdqe                                # Sign extend eax to rax
+        mov     eax, DWORD PTR -96[rbp+rax*4]  # Load array[i] into eax
+        lea     edx, -5[rax]                # edx = array[i] - 5
+        mov     eax, DWORD PTR -4[rbp]      # Load i into eax
+        cdqe                                # Sign extend eax to rax
+        mov     DWORD PTR -96[rbp+rax*4], edx  # Store result back into array[i]
+        add     DWORD PTR -4[rbp], 1        # i++
+.L2:
+        cmp     DWORD PTR -4[rbp], 4        # Compare i with 4
+        jle     .L3                         # If i <= 4, repeat the loop
+
+        mov     DWORD PTR -4[rbp], 5        # i = 5
+        jmp     .L4                         # Jump to check condition for the second loop
+.L5:
+        # Increment next 5 elements by 5
+        mov     eax, DWORD PTR -4[rbp]      # Load i into eax
+        cdqe                                # Sign extend eax to rax
+        mov     eax, DWORD PTR -96[rbp+rax*4]  # Load array[i] into eax
+        lea     edx, 5[rax]                 # edx = array[i] + 5
+        mov     eax, DWORD PTR -4[rbp]      # Load i into eax
+        cdqe                                # Sign extend eax to rax
+        mov     DWORD PTR -96[rbp+rax*4], edx  # Store result back into array[i]
+        add     DWORD PTR -4[rbp], 1        # i++
+.L4:
+        cmp     DWORD PTR -4[rbp], 9        # Compare i with 9
+        jle     .L5                         # If i <= 9, repeat the loop
+
+        mov     DWORD PTR -4[rbp], 10       # i = 10
+        jmp     .L6                         # Jump to check condition for the third loop
+.L7:
+        # Increment next 5 elements by 2
+        mov     eax, DWORD PTR -4[rbp]      # Load i into eax
+        cdqe                                # Sign extend eax to rax
+        mov     eax, DWORD PTR -96[rbp+rax*4]  # Load array[i] into eax
+        lea     edx, 2[rax]                 # edx = array[i] + 2
+        mov     eax, DWORD PTR -4[rbp]      # Load i into eax
+        cdqe                                # Sign extend eax to rax
+        mov     DWORD PTR -96[rbp+rax*4], edx  # Store result back into array[i]
+        add     DWORD PTR -4[rbp], 1        # i++
+.L6:
+        cmp     DWORD PTR -4[rbp], 14       # Compare i with 14
+        jle     .L7                         # If i <= 14, repeat the loop
+
+        mov     DWORD PTR -4[rbp], 15       # i = 15
+        jmp     .L8                         # Jump to check condition for the fourth loop
+.L9:
+        # Decrement next 5 elements by 2
+        mov     eax, DWORD PTR -4[rbp]      # Load i into eax
+        cdqe                                # Sign extend eax to rax
+        mov     eax, DWORD PTR -96[rbp+rax*4]  # Load array[i] into eax
+        lea     edx, -2[rax]                # edx = array[i] - 2
+        mov     eax, DWORD PTR -4[rbp]      # Load i into eax
+        cdqe                                # Sign extend eax to rax
+        mov     DWORD PTR -96[rbp+rax*4], edx  # Store result back into array[i]
+        add     DWORD PTR -4[rbp], 1        # i++
+.L8:
+        cmp     DWORD PTR -4[rbp], 19       # Compare i with 19
+        jle     .L9                         # If i <= 19, repeat the loop
+
+        mov     DWORD PTR -4[rbp], 20       # i = 20
+        jmp     .L10                        # Jump to check condition for the fifth loop
+.L11:
+        # Increment 21st element by 9
+        mov     eax, DWORD PTR -4[rbp]      # Load i into eax
+        cdqe                                # Sign extend eax to rax
+        mov     eax, DWORD PTR -96[rbp+rax*4]  # Load array[i] into eax
+        lea     edx, 9[rax]                 # edx = array[i] + 9
+        mov     eax, DWORD PTR -4[rbp]      # Load i into eax
+        cdqe                                # Sign extend eax to rax
+        mov     DWORD PTR -96[rbp+rax*4], edx  # Store result back into array[i]
+        add     DWORD PTR -4[rbp], 1        # i++
+.L10:
+        cmp     DWORD PTR -4[rbp], 21       # Compare i with 21
+        jle     .L11                        # If i <= 21, repeat the loop
+
+        # Function Epilogue
+        mov     eax, 0                      # Return value 0
+        pop     rbp                         # Restore old base pointer
+        .cfi_def_cfa 7, 8
+        ret                                 # Return from function
+        .cfi_endproc
+.LFE0:
+        .size   main, .-main
+        .section        .note.GNU-stack,"",@progbits
+
+
+mov     DWORD PTR -96[rbp], 88       # array[0] = 88  + 5
+mov     DWORD PTR -92[rbp], 83       # array[1] = 83  + 5
+mov     DWORD PTR -88[rbp], 72       # array[2] = 72  + 5
+mov     DWORD PTR -84[rbp], 89       # array[3] = 89  + 5
+mov     DWORD PTR -80[rbp], 75       # array[4] = 75  + 5
+mov     DWORD PTR -76[rbp], 118      # array[5] = 118 - 5
+mov     DWORD PTR -72[rbp], 83       # array[6] = 83  - 5
+mov     DWORD PTR -68[rbp], 111      # array[7] = 111 - 5
+mov     DWORD PTR -64[rbp], 106      # array[8] = 106 - 5
+mov     DWORD PTR -60[rbp], 112      # array[9] = 112 - 5
+mov     DWORD PTR -56[rbp], 112      # array[10] = 112 + 2
+mov     DWORD PTR -52[rbp], 108      # array[11] = 108 + 2
+mov     DWORD PTR -48[rbp], 99       # array[12] = 99  + 2
+mov     DWORD PTR -44[rbp], 93       # array[13] = 93  + 2
+mov     DWORD PTR -40[rbp], 114      # array[14] = 114 + 2
+mov     DWORD PTR -36[rbp], 113      # array[15] = 113 - 2
+mov     DWORD PTR -32[rbp], 119      # array[16] = 119 - 2
+mov     DWORD PTR -28[rbp], 116      # array[17] = 116 - 2
+mov     DWORD PTR -24[rbp], 112      # array[18] = 112 - 2
+mov     DWORD PTR -20[rbp], 103      # array[19] = 103 - 2
+mov     DWORD PTR -16[rbp], 79       # array[20] = 79  + 9
+mov     DWORD PTR -12[rbp], 125      # array[21] = 125
+
+
+
+S  =  83
+N  =  78
+C  =  67 
+T  =  84
+F  =  70 
+{  = 123
+X = 88
+t  = 116
+o  = 111 
+u  = 117
+r  = 114
+n  = 110
+e  = 101
+_  = 95 
+t  = 116
+o  = 111
+u  = 117
+r  = 114
+n  = 110 
+e  = 101
+X = 88 
+}  = 125 
+
+SNCTF{Xtourne_tourneX}
