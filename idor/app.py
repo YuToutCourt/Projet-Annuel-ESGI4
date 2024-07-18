@@ -62,7 +62,7 @@ def flag(date):
 # Route pour télécharger le fichier .elf
 @app.route('/download_elf')
 def download_elf():
-    return send_from_directory(directory='static', path='farwest_quiz.elf', as_attachment=True)
+    return send_from_directory(directory='static', path='farwest_quiz', as_attachment=True)
 
 # Redirection 302 si le chemin /flag est accédé sans date
 @app.route('/flag')
