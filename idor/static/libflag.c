@@ -1,8 +1,14 @@
 // libflag.c
 #include <stdio.h>
+#include <string.h>
 
 void reveal_flag() {
-    printf("Flag: SNCTF{2O24_7ptAmb3r_6t33nTH}");
+    char encrypted_flag[] = {0x18, 0x05, 0x0e, 0x07, 0x15, 0x6b, 0x19, 0x45, 0x19, 0x11, 0x1d, 0x16, 0x1b, 0x57, 0x14, 0x46, 0x13, 0x41, 0x14, 0x45, 0x13, 0x00}; // Flag chiffré
+    char key = 'K';
+    
+    /*xor_decrypt(encrypted_flag, decrypted_flag, key);
+    
+    printf("Flag: %s\n", decrypted_flag);*/
 }
 
 int main() {
