@@ -10,12 +10,21 @@ En chechant on trouve qu'il existe un /flag, il faut ensuite rajouter la bonne d
 
 En arrivant sur ce lien un elf se télécharge, il s'agit d'un quizz qui doit être reverse.
 
-Avec cutter / ghidra / ida, on peut voir qu'une fonction hidden_flag() existe, celle-ci récupère un fichier en mémoire
+Avec cutter / ghidra / ida, on peut voir qu'une fonction hidden_flag() existe, celle-ci récupère un fichier en mémoire :
 
 ![alt text](image.png)
 
-On peut retrouver son hexadecimal. 
+
+On peut retrouver son hexadecimal : 
+
 ![alt text](image-1.png)
 
-Une fois l'hexa convertit dans un fichier binaire, on peut le reverse et retrouver le flag.
+
+Une fois l'hexa convertit dans un fichier binaire, on peut le reverse et voir le flag peut être afficher mais chiffré en XOR avec une clé :
+
 ![alt text](image-2.png)
+
+
+Une fois l'hexadecimal du flag et la clé récupérer il reste plus qu'a déchiffrer le flag :
+
+![alt text](image-3.png)
