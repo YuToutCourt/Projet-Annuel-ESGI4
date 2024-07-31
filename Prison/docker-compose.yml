@@ -1,0 +1,6 @@
+services:
+  snctf_prison:
+    image: gizm0o/ctf:prison
+    ports:
+      - '2222:22'
+    tty: true      

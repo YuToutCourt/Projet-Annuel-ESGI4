@@ -16,7 +16,7 @@ COPY ./mail/ /mail/
 
 WORKDIR /site/
 
-EXPOSE 8080
+EXPOSE 18080
 EXPOSE 25
 
 ENV KEY FarBanK
