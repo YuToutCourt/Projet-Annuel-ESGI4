@@ -1,5 +1,10 @@
 # BANQUE WRITEUP
 
+**LORE:** Votre mission est d'infiltrer les serveurs de la FarBank pour récupérer des informations cruciales concernant le train que vous souhaitez détourner. Ils ont probablement échangé des emails contenant des détails importants sur le train.
+
+Format flag: SNCTF{ }
+
+
 Aller dans contact pour contacter la banque
 
 ![alt text](image.png)
