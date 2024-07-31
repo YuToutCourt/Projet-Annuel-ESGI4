@@ -25,7 +25,7 @@ Le train le plus proche
 ![alt text](image-1.png)
 Mais l'heure est pas valide
 
-En trouvant l'api endpoint `/api/train?nam` et une injection SQL
+En trouvant l'api endpoint `/api/train?name=` et une injection SQL
 `' UNION SELECT * from train --'` on découvre qu'il y a des trains privés et nom privés
 
 ![alt text](image-2.png)
