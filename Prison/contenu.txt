@@ -1,5 +1,5 @@
 password root : zoulette
-password public : tocard
+password cowboy: tocard
 
 # 1er étape : 
 
