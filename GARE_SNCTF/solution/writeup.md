@@ -49,4 +49,4 @@ for train in data["train"]:
 
 ```
 
-Il y a bien sur plusieurs moyens de trouver le bon train. Avec une full reques sql.
+Il y a bien sur plusieurs moyens de trouver le bon train. Avec une full request sql.

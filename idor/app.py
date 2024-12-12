@@ -51,7 +51,7 @@ def event_detail(event_id):
     return render_template('event.html', event=event)
 
 # Page de flag accessible par une date spécifique
-@app.route('/flag/<date>')
+@app.route('/admin/<date>')
 def flag(date):
     secret_event_date = '2024-07-30'
     if date == secret_event_date:

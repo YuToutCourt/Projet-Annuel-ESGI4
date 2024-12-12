@@ -28,3 +28,5 @@ Une fois l'hexa convertit dans un fichier binaire, on peut le reverse et voir le
 Une fois l'hexadecimal du flag et la clé récupérer il reste plus qu'a déchiffrer le flag :
 
 ![alt text](image-3.png)
+
+SNCTF{2O24_7ptAmb3r_6t33nTH}
